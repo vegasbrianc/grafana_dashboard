@@ -36,7 +36,7 @@
     }
   ],
   "id": null,
-  "title": "Docker Monitoring with Prometheus",
+  "title": "Grafana_Dashboard.json",
   "description": "Docker Monitoring Template",
   "tags": [
     "docker"
@@ -44,7 +44,7 @@
   "style": "dark",
   "timezone": "browser",
   "editable": true,
-  "hideControls": true,
+  "hideControls": false,
   "sharedCrosshair": true,
   "rows": [
     {
@@ -189,7 +189,7 @@
           },
           "targets": [
             {
-              "expr": "sum(sum by (container_name)( rate(container_cpu_usage_seconds_total{name!=\"\"}[1m] ) )) / count(node_cpu{mode=\"system\"}) * 100",
+              "expr": "sum(sum by (container_name)( rate(container_cpu_usage_seconds_total{image!=\"\"}[1m] ) )) / count(node_cpu{mode=\"system\"}) * 100",
               "interval": "10s",
               "intervalFactor": 1,
               "refId": "A",
@@ -340,7 +340,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sort_desc(sum(rate(container_cpu_user_seconds_total {name!=\"\"} [5m])) by (name))",
+              "expr": "sort_desc(sum(container_cpu_user_seconds_total{image!=\"\"}) by (name))",
               "interval": "10s",
               "intervalFactor": 1,
               "legendFormat": "{{ name }}",
@@ -437,7 +437,7 @@
               "interval": "10s",
               "intervalFactor": 1,
               "legendFormat": "{{ name }}",
-              "metric": "",
+              "metric": "container_memory_usage:sort_desc",
               "refId": "A",
               "step": 10
             }
@@ -572,8 +572,8 @@
     }
   ],
   "time": {
-    "from": "2016-07-14T10:55:35.243Z",
-    "to": "2016-07-14T11:58:22.068Z"
+    "from": "now-1h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -606,9 +606,9 @@
   "annotations": {
     "list": []
   },
-  "refresh": false,
+  "refresh": "10s",
   "schemaVersion": 12,
-  "version": 8,
+  "version": 1,
   "links": [],
   "gnetId": 162
 }
