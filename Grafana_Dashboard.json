@@ -340,7 +340,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sort_desc(sum(container_cpu_user_seconds_total{image!=\"\"}) by (name))",
+              "expr": "sort_desc(sum(rate(container_cpu_user_seconds_total{image!=\"\"}[1m])) by (name))",
               "interval": "10s",
               "intervalFactor": 1,
               "legendFormat": "{{ name }}",
@@ -364,7 +364,7 @@
           },
           "yaxes": [
             {
-              "format": "percent",
+              "format": "percentunit",
               "label": null,
               "logBase": 1,
               "max": null,
