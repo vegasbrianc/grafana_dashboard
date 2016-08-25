@@ -36,7 +36,11 @@
     }
   ],
   "id": null,
+<<<<<<< HEAD
   "title": "Docker Dashboard",
+=======
+  "title": "Grafana_Dashboard2.json",
+>>>>>>> 60fda3840b2bb413ebf7e6dd4cb5ea4e1309f379
   "description": "Docker Monitoring Template",
   "tags": [
     "docker"
@@ -686,5 +690,10 @@
   "schemaVersion": 12,
   "version": 3,
   "links": [],
+<<<<<<< HEAD
   "gnetId": 179
 }
+=======
+  "gnetId": 162
+}
+>>>>>>> 60fda3840b2bb413ebf7e6dd4cb5ea4e1309f379
