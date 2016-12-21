@@ -64,11 +64,11 @@
           "datasource": "${DS_PROMETHEUS}",
           "editable": true,
           "error": false,
-          "format": "percent",
+          "format": "bytes",
           "gauge": {
             "maxValue": 100,
             "minValue": 0,
-            "show": true,
+            "show": false,
             "thresholdLabels": false,
             "thresholdMarkers": true
           },
@@ -110,7 +110,7 @@
           },
           "targets": [
             {
-              "expr": "(sum(node_memory_MemTotal) - sum(node_memory_MemFree+node_memory_Buffers+node_memory_Cached) ) / sum(node_memory_MemTotal) * 100",
+              "expr": "sum(container_memory_usage_bytes{image!=\"\"})",
               "interval": "10s",
               "intervalFactor": 1,
               "refId": "A",
@@ -189,7 +189,7 @@
           },
           "targets": [
             {
-              "expr": "sum(sum by (container_name)( rate(container_cpu_usage_seconds_total{image!=\"\"}[1m] ) )) / count(node_cpu{mode=\"system\"}) * 100",
+              "expr": "sum(rate(container_cpu_user_seconds_total{image!=\"\"}[1m])) / count(machine_cpu_cores) * 100",
               "interval": "10s",
               "intervalFactor": 1,
               "refId": "A",
